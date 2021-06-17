@@ -17,6 +17,7 @@ module.exports = gql`
     nombres: String!
     apellidos: String!
     email: String!
+    esAdmin: Boolean!
     token: String!
     creadoEn: String!
   }
