@@ -15,7 +15,7 @@ module.exports = gql`
     cuerpo: String!
     nombres: String
     apellidos: String
-    numeroDeInteresados: Int
+    numeroDeInteresados: Int!
     paga: Float!
     categoria: String!
     interesados: [Interesado]!
