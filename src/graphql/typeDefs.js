@@ -1,6 +1,13 @@
 const gql = require('graphql-tag');
 
 module.exports = gql`
+  type Interesado {
+    id: ID!
+    usuario: ID!
+    nombres: String!
+    apellidos: String!
+    creadoEn: String!
+  }
   type Oferta {
     id: ID!
     usuario: ID!
@@ -11,7 +18,7 @@ module.exports = gql`
     numeroDeInteresados: Int
     paga: Float!
     categoria: String!
-    interesados: [ID!]
+    interesados: [Interesado]!
     creadoEn: String!
   }
   type Usuario {
@@ -47,5 +54,6 @@ module.exports = gql`
     loginUsuario(email: String!, password: String!): Usuario!
     crearOferta(crearOfertaInput: CrearOfertaInput): Oferta!
     borrarOferta(ofertaId: ID!): String!
+    interesadoEnOferta(ofertaId: ID!): Oferta!
   }
 `;

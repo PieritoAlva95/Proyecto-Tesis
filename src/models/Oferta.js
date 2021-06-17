@@ -20,10 +20,6 @@ const OfertaSchema = new Schema(
     apellidos: {
       type: String,
     },
-    numeroDeInteresados: {
-      type: Number,
-      default: 0,
-    },
     paga: {
       type: Number,
       required: true,
@@ -38,6 +34,15 @@ const OfertaSchema = new Schema(
         usuario: {
           type: Schema.Types.ObjectId,
           ref: 'usuarios',
+        },
+        nombres: {
+          type: String,
+        },
+        apellidos: {
+          type: String,
+        },
+        creadoEn: {
+          type: String,
         },
       },
     ],
