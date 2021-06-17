@@ -12,16 +12,16 @@ function MenuBar() {
   return (
     <Menu pointing secondary size='massive' color='teal'>
       <Menu.Item
-        name='Trabajos 24/7'
-        active={itemActivo === 'Trabajos 24/7'}
+        name='Trabajos'
+        active={itemActivo === 'Trabajos'}
         onClick={handleItemClick}
         as={Link}
         to='/'
       />
       <Menu.Menu position='right'>
         <Menu.Item
-          name='Iniciar sesión'
-          active={itemActivo === 'Iniciar sesión'}
+          name='Ingresa'
+          active={itemActivo === 'Ingresa'}
           onClick={handleItemClick}
           as={Link}
           to='/login'
