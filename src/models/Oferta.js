@@ -4,7 +4,7 @@ const OfertaSchema = new Schema(
   {
     usuario: {
       type: Schema.Types.ObjectId,
-      ref: 'Usuario',
+      ref: 'usuarios',
     },
     titulo: {
       type: String,
@@ -37,7 +37,7 @@ const OfertaSchema = new Schema(
       {
         usuario: {
           type: Schema.Types.ObjectId,
-          ref: 'Usuario',
+          ref: 'usuarios',
         },
       },
     ],
