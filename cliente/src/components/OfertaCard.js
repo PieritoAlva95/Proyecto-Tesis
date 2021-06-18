@@ -35,7 +35,7 @@ const OfertaCard = ({
           <Button color='teal' basic>
             <Icon name='heart' />
           </Button>
-          <Label basic color='read' pointing='left'>
+          <Label basic color='teal' pointing='left'>
             {numeroDeInteresados === 1
               ? `${numeroDeInteresados} interesado`
               : `${numeroDeInteresados} interesados`}

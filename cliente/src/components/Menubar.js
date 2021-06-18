@@ -6,7 +6,6 @@ function MenuBar() {
   const nombreRuta = window.location.pathname;
   const ruta = nombreRuta === '/' ? 'home' : nombreRuta.substr(1);
   const [itemActivo, setItemActivo] = useState(ruta);
-
   const handleItemClick = (e, { name }) => setItemActivo(name);
 
   return (
