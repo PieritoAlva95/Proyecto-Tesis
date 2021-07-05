@@ -52,6 +52,7 @@ module.exports = gql`
   type Mutation {
     registarUsuario(registrarInput: RegistrarInput): Usuario!
     loginUsuario(email: String!, password: String!): Usuario!
+    resetearPassword(email: String!): String!
     crearOferta(crearOfertaInput: CrearOfertaInput): Oferta!
     borrarOferta(ofertaId: ID!): String!
     interesadoEnOferta(ofertaId: ID!): Oferta!

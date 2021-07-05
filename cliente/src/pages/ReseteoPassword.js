@@ -1,21 +1,15 @@
 import gql from 'graphql-tag';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 
-import { AuthContext } from '../context/auth';
-import { Link } from 'react-router-dom';
-
-function Login(props) {
-  const context = useContext(AuthContext);
+function ReseteoPassword(props) {
   const [errors, setErrors] = useState({});
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const [loginUsuario, { loading }] = useMutation(LOGIN_USUARIO, {
-    update(_, { data: { loginUsuario: userData } }) {
-      context.login(userData);
-      props.history.push('/');
+  const [resetearPassword, { loading }] = useMutation(RESETEAR_PASSWORD, {
+    update(_) {
+      props.history.push('/login');
     },
     onError(error) {
       setErrors(error.graphQLErrors[0].extensions.exception.errors);
@@ -24,10 +18,9 @@ function Login(props) {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await loginUsuario({
+    await resetearPassword({
       variables: {
         email,
-        password,
       },
     });
   };
@@ -44,7 +37,7 @@ function Login(props) {
         </div>
       )}
       <Form onSubmit={onSubmit} noValidate className={loading ? 'loading' : ''}>
-        <h1>Inicio de sesión</h1>
+        <h1>Reseteo de Contraseña</h1>
         <Form.Input
           label='Email'
           placeholder='Email...'
@@ -53,36 +46,19 @@ function Login(props) {
           error={errors.email || errors.general ? true : false}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Form.Input
-          label='Contraseña'
-          placeholder='Contraseña...'
-          type='password'
-          value={password}
-          error={errors.email || errors.general ? true : false}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+
         <Button type='submit' primary>
-          Ingresar
-        </Button>
-        <Button as={Link} to={'/reseteo'}>
-          Has olvidado tu Contraseña?
+          Enviar
         </Button>
       </Form>
     </div>
   );
 }
 
-const LOGIN_USUARIO = gql`
-  mutation LoginUsuario($email: String!, $password: String!) {
-    loginUsuario(email: $email, password: $password) {
-      id
-      nombres
-      apellidos
-      email
-      token
-      creadoEn
-    }
+const RESETEAR_PASSWORD = gql`
+  mutation resetearPassword($email: String!) {
+    resetearPassword(email: $email)
   }
 `;
 
-export default Login;
+export default ReseteoPassword;

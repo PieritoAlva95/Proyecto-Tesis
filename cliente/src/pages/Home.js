@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Grid } from 'semantic-ui-react';
 
+import { AuthContext } from '../context/auth';
 import OfertaCard from '../components/OfertaCard';
+import OfertaForm from '../components/OfertaForm';
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
   const { data, loading } = useQuery(FETCH_OFERTAS_QUERY);
 
   return (
@@ -14,6 +17,11 @@ const Home = () => {
         <h1>Ofertas Recientes</h1>
       </Grid.Row>
       <Grid.Row>
+        {user && (
+          <Grid.Column>
+            <OfertaForm />
+          </Grid.Column>
+        )}
         {loading ? (
           <h1>Cargando Ofertas...</h1>
         ) : (

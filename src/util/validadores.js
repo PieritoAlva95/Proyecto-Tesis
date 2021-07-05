@@ -45,6 +45,9 @@ module.exports.validarRegistrarInput = (
 
   if (password === '') {
     errors.password = 'La contraseña del usuario no debe estar vacía.';
+  } else if (password.length < 6) {
+    errors.password =
+      'La contraseña del usuario tiene que tener un minimo de 6 caracteres.';
   } else if (password !== confirmarPassword) {
     errors.confirmarPassword = 'Las contraseñas deben coincidir.';
   }
@@ -69,6 +72,24 @@ module.exports.validarLoginInput = (email, password) => {
 
   if (password.trim() === '') {
     errors.password = 'La contraseña no debe estar vacía.';
+  }
+
+  return {
+    errors,
+    valid: Object.keys(errors).length < 1,
+  };
+};
+
+module.exports.validarReseteoPasswordInput = (email) => {
+  const errors = {};
+  if (email.trim() === '') {
+    errors.email = 'El correo electrónico no debe estar vacío.';
+  } else {
+    const regEx =
+      /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+    if (!email.match(regEx)) {
+      errors.email = 'Por favor, ingrese un correo electronico valido.';
+    }
   }
 
   return {

@@ -11,6 +11,7 @@ import MenuBar from './components/Menubar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ReseteoPassword from './pages/ReseteoPassword';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Container>
           <MenuBar />
           <Route exact path='/' component={Home} />
+          <Route exact path='/reseteo' component={ReseteoPassword} />
           <AuthRoute exact path='/login' component={Login} />
           <AuthRoute exact path='/register' component={Register} />
         </Container>

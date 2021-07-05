@@ -18,7 +18,7 @@ function Register(props) {
   const [confirmarPassword, setConfirmarPassword] = useState('');
 
   const [registrarUsuario, { loading }] = useMutation(REGISTAR_USUARIO, {
-    update(_, { data: { registrarUsuario: userData } }) {
+    update(_, { data: { registarUsuario: userData } }) {
       context.login(userData);
       props.history.push('/');
     },
